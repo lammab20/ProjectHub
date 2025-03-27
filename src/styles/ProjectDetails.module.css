@@ -1,0 +1,76 @@
+/* ProjectDetails.module.css */
+
+.projectContainer {
+    width: 100%;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #a39e9e; /* Hintergrundfarbe */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #5a2e33; /* Farbe für den Titel */
+}
+
+.projectInfo {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.projectInfo strong {
+    color: #5a2e33; /* Farbige Hervorhebung der Labels */
+}
+
+.projectStatus {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.projectStatus span {
+    color: #5a2e33;
+}
+
+.projectDates {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.projectDates span {
+    color: #888;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 18px;
+    background-color: #5a2e33;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #002e5e;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    font-size: 18px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+    color: #5a2e33;
+}

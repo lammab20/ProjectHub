@@ -1,0 +1,24 @@
+.dropdownContainer {
+    margin-bottom: 15px;
+}
+
+.dropdownLabel {
+    font-size: 14px;
+    color: #5a2e33;
+    margin-bottom: 5px;
+}
+
+.dropdownSelect {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.dropdownSelect:focus {
+    border-color: #5a2e33;
+    outline: none;
+}
