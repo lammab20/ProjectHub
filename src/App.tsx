@@ -7,6 +7,7 @@ import Navbar from "./component/Navbar.tsx";
 import {AuthProvider} from "./context/AuthContext.tsx";
 import Home from "./pages/Home.tsx";
 import ProjectErstellen from "./pages/ProjectErstellen.tsx";
+import {UserList} from "./pages/UserList.tsx";
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
                             <Route path="/" element={<Home />} />
                             <Route path="/projects" element={<Projects />} />
                             <Route path="/create" element={<ProjectErstellen />} />
+                            <Route path="/loggedInUser" element={<UserList />} />
                         </>
                     ) : (
                         // Falls nicht eingeloggt, zur Login-Seite weiterleiten

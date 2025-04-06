@@ -3,7 +3,9 @@ import axios from "axios";
 import styles from "../styles/Login.module.css";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../context/AuthContext.tsx";
-import {login} from "../utils/auth.ts";
+import {getUserRole, login} from "../utils/auth.ts";
+import {IMessage} from "../models/IMessage.ts";
+import WSHandler from "../utils/ws/WSHandler.ts";
 
 
 const Login = () => {
@@ -15,6 +17,8 @@ const Login = () => {
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        console.log("hallo vorm try")
 
         try {
             const response = await axios.post("http://localhost:3000/auth/login", {
@@ -30,6 +34,16 @@ const Login = () => {
 
             // Speichern des Tokens (z. B. in localStorage)
             login(token);
+            console.log("Role zum übergeben: ", role)
+
+            const msg: IMessage = {
+                type: "LOGIN",
+                payload: {
+                    email: email,
+                    role: "ADMIN"
+                }
+            };
+            WSHandler.sendMessage(msg);
 
             // Weiterleitung oder Benachrichtigung
             console.log("Login erfolgreich:", user);
@@ -37,7 +51,7 @@ const Login = () => {
             navigate("/Projects")
             window.location.reload();
         } catch (err) {
-            setError("Invalid credentials");
+            setError("Invalid credentials"+err);
         }
     };
 

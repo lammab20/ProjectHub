@@ -22,8 +22,14 @@ const Home = () => {
                 {/* 🔹 Button nur für Admins sichtbar */}
                 {role === "ADMIN" && (
                     <button className={styles.actionButton} onClick={() => navigate("/create")}>
-                        <AiOutlineAppstoreAdd className={styles.icon} />
+                        <AiOutlineAppstoreAdd className={styles.icon}/>
                         Neues Projekt hinzufügen
+                    </button>
+                )}
+                {role === "ADMIN" && (
+                    <button className={styles.actionButton} onClick={() => navigate("/loggedInUser")}>
+                        <AiOutlineAppstoreAdd className={styles.icon}/>
+                        Eingeloggte Benutzer anzeigen
                     </button>
                 )}
             </div>
