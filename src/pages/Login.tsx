@@ -3,7 +3,11 @@ import axios from "axios";
 import styles from "../styles/Login.module.css";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../context/AuthContext.tsx";
-import {login} from "../utils/auth.ts";
+import {getUserRole, login} from "../utils/auth.ts";
+import {IMessage} from "../models/IMessage.ts";
+import WSHandler from "../utils/ws/WSHandler.ts";
+import {useWsStore} from "../utils/ws/WsStore.ts";
+import navbar from "../component/Navbar.tsx";
 
 
 const Login = () => {
@@ -12,9 +16,12 @@ const Login = () => {
     const [error, setError] = useState<string>("");
     const navigate = useNavigate();
     const {setIsUserAdmin} = useAuth();
+    const [token, setToken] = useState<string>();
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        console.log("hallo vorm try")
 
         try {
             const response = await axios.post("http://localhost:3000/auth/login", {
@@ -30,15 +37,30 @@ const Login = () => {
 
             // Speichern des Tokens (z. B. in localStorage)
             login(token);
+            console.log("Role zum übergeben: ", role)
+            console.log("Role: ", getUserRole())
+
+            const msg: IMessage = {
+                type: "LOGIN",
+                payload: {
+                    email: email,
+                    role: getUserRole()
+                }
+            };
+            WSHandler.sendMessage(msg);
 
             // Weiterleitung oder Benachrichtigung
             console.log("Login erfolgreich:", user);
-            // Hier könntest du den User z.B. zur Dashboard-Seite weiterleiten
-            navigate("/Projects")
-            window.location.reload();
+            if(token){
+                setToken(token);
+            }
+            window.location.href = "/projects";
+
         } catch (err) {
-            setError("Invalid credentials");
+            setError("Invalid credentials"+err);
         }
+
+
     };
 
     return (
