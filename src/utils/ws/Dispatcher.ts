@@ -10,8 +10,10 @@ class Dispatcher {
                 useWsStore.getState().setUser(msg.payload as IUserWS);
                 break;
             case "USER_LIST":
+                console.log("hallo")
                 useWsStore.getState().setUsers(msg.payload as IUser[]);
-                console.log("Message Erhalten")
+                console.log("Message Erhalten");
+                console.log("users: ", useWsStore.getState().users)
                 break;
         }
     }

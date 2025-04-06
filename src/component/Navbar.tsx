@@ -10,7 +10,7 @@ const Navbar = () => {
     // Logout-Funktion: Token entfernen
     const handleLogout = () => {
         logout();
-        navigate("/login"); // Nach dem Logout zur Login-Seite navigieren
+        navigate("/"); // Nach dem Logout zur Login-Seite navigieren
     };
 
     return (
@@ -18,11 +18,11 @@ const Navbar = () => {
             <div className={styles.navContent}>
                 <a href="/" className={styles.logo}>Project Hub</a>
                 <ul className={styles.navLinks}>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="/home">Home</a></li>
                     <li><a href="/projects">Projects</a></li>
 
                     {!isAuthenticated() && (
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="/">Login</a></li>
                     )}
 
                     {isAuthenticated() && (

@@ -29,7 +29,7 @@ export const logout = () => {
     if (tabId) {
         localStorage.removeItem(`token_${tabId}`);
     }
-    window.location.href = "/login";
+    window.location.href = "/";
 };
 
 export function getToken(): string | null {

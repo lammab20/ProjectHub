@@ -3,14 +3,12 @@ import {useWsStore} from "../utils/ws/WsStore.ts"; // Annahme: Dein User-Interfa
 export const UserList = () => {
     const {users} = useWsStore();
 
+    console.log("users: ", users)
+
     return (
         <div>
             <h3>Logged in Users</h3>
-            {users.length > 0 &&
-                <li>
-                    {users.map(u => <li>{u.email}</li>)}
-                </li>
-            }
+            {users.map(u => <li>{u.email}</li>)}
         </div>
     );
 };
